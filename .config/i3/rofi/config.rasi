@@ -1,0 +1,50 @@
+/* Rofi configuration using i3wm colors */
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+}
+
+listview {
+    lines: 8;
+}
+
+* {
+    bg: #EAF6FA;
+    fg: #2D2F30;
+    accent: #747C80;
+    urgent: #A83A3A;
+    inactive: #CBD5D8;
+}
+
+window {
+	background-color: @bg;
+    border: 0px solid;
+    padding: 20px;
+}
+
+element {
+    padding: 8px;
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element normal.normal {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element alternate.normal {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color: @bg;
+}
+
+entry {
+    background-color: @bg;
+    text-color: @fg;
+    border: @accent;
+}

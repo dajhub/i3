@@ -1,0 +1,35 @@
+@theme "clipboard"
+
+* {
+    font: "Monospace 10";
+}
+
+window {
+    width: 60%;
+    background-color: #2D2F30;
+    text-color: #EAF6FA;
+    border: 2px;
+    border-color: #747C80;
+    border-radius: 8px;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: #2D2F30;
+    text-color: #EAF6FA;
+}
+
+listview {
+    background-color: #2D2F30;
+    lines: 15;
+}
+
+element {
+    background-color: #2D2F30;
+    text-color: #EAF6FA;
+}
+
+element selected {
+    background-color: #747C80;
+    text-color: #2D2F30;
+}
