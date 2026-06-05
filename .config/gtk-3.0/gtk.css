@@ -1,0 +1,4 @@
+/* Change default font size for all GTK widgets */
+* {
+    font-size: 11px;
+}

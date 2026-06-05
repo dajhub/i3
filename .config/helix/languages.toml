@@ -1,0 +1,63 @@
+# Enable Bash
+[[language]]
+name = "bash"
+scope = "source.bash"
+file-types = ["sh", "bash"]
+roots = [".git"]
+
+# TOML
+[[language]]
+name = "toml"
+file-types = ["toml"]
+
+# Markdown
+[[language]]
+name = "markdown"
+file-types = ["md", "markdown"]
+
+# CSS
+[[language]]
+name = "css"
+file-types = ["css"]
+
+# SCSS
+[[language]]
+name = "scss"
+file-types = ["scss"]
+
+# JSON
+[[language]]
+name = "json"
+file-types = ["json"]
+
+# HTML
+[[language]]
+name = "html"
+file-types = ["html"]
+
+# Python
+[[language]]
+name = "python"
+file-types = ["py"]
+roots = ["pyproject.toml", "requirements.txt"]
+
+# Nix
+[[language]]
+name = "nix"
+file-types = ["nix"]
+
+# Lua
+[[language]]
+name = "lua"
+file-types = ["lua"]
+
+# YAML
+[[language]]
+name = "yaml"
+file-types = ["yml", "yaml"]
+
+# Rasi (Rofi theme files)
+[[language]]
+name = "rasi"
+scope = "source.rasi"
+file-types = ["rasi"]

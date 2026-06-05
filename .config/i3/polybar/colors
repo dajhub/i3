@@ -1,0 +1,32 @@
+; adapted catppuccin macchiato
+
+[color]
+
+background= #24273a
+foreground = #cad3f5
+
+base = #24273a
+crust = #181926
+mantle = #1e2030
+surface0 = #363a4f
+surface2 = #5b6078
+text = #cad3f5
+subtext = #b8c0e0
+teal = #8bd5ca
+sky = #91d7e3
+blue = #8aadf4
+lavender = #b7bdf8
+flamingo = #f0c6c6
+green = #a6da95
+yellow = #eed49f
+red = #ed8796
+
+
+altsky = #66E3F7
+altblue = #5A95FF
+altlavender = #98A4FF
+altflamingo = #FFA8AF
+altgreen = #84EA66
+altyellow = #FFD36B
+altred = #FF617C
+

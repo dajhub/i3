@@ -1,0 +1,138 @@
+# ======================================================================
+# Hybrid Nord + OneDark – Adapted Theme
+# ======================================================================
+
+'attribute' = { fg = 'base0D' }
+'comment' = { fg = 'base03', modifiers = ['italic'] }
+'comment.block' = { fg = 'base0B', modifiers = ['italic'] }
+'comment.block.documentation' = { fg = 'base0B', modifiers = ['italic'] }
+
+'constant' = { fg = 'base0E' }
+'constant.numeric' = { fg = 'base09' }
+
+'constructor' = { fg = 'base08' }
+
+'function' = { fg = 'base0A' }
+'function.builtin' = { fg = 'base0D' }
+'function.method' = { fg = 'base05' }
+
+'keyword' = { fg = 'base08' }
+'label' = { fg = 'base0B' }
+
+'namespace' = { fg = 'base05' }
+
+'operator' = { fg = 'base0D' }
+
+'punctuation.bracket' = { fg = 'base08' }
+'punctuation.delimiter' = { fg = 'base08', modifiers = ['bold'] }
+'punctuation.special' = { fg = 'base08' }
+
+'string' = { fg = 'base0B' }
+
+'tag' = { fg = 'base0C' }
+
+'type' = { fg = 'base0D' }
+
+'variable' = { fg = 'base0C' }
+'variable.parameter' = { fg = 'base05' }
+
+# ---------------- Markup -----------------
+
+'markup.bold' = { fg = 'base09', modifiers = ['bold'] }
+'markup.italic' = { fg = 'base0E', modifiers = ['italic'] }
+'markup.strikethrough' = { modifiers = ['crossed_out'] }
+
+'markup.heading' = { fg = 'base08' }
+
+'markup.link' = { fg = 'base09' }
+'markup.link.url' = { fg = 'base0E' }
+'markup.link.text' = { fg = 'base09' }
+'markup.link.label' = { fg = 'base0B' }
+
+'markup.list' = { fg = 'base08' }
+'markup.quote' = { fg = 'base0B', modifiers = ['italic'] }
+
+'markup.raw.block' = { fg = 'base0B', bg = 'base00' }
+'markup.raw.inline' = { fg = 'base0B', bg = 'base03' }
+
+# ---------------- Diffs -----------------
+
+'diff.plus' = { fg = 'base0B' }
+'diff.minus' = { fg = 'base08' }
+'diff.delta' = { fg = 'base0D' }
+
+# ---------------- UI -----------------
+
+'ui.background' = { bg = 'base00' }
+
+'ui.cursor' = { bg = 'base09', fg = 'base01' }
+'ui.cursor.match' = { fg = 'base08', modifiers = ['bold'] }
+
+'ui.cursorline' = { bg = 'base01' }
+
+'ui.linenr' = { fg = 'base03' }
+'ui.linenr.selected' = { fg = 'base09', bg = 'base01', modifiers = ['bold'] }
+
+'ui.statusline' = { fg = 'base04', bg = 'base02' }
+'ui.statusline.normal' = { bg = 'base02' }
+'ui.statusline.insert' = { bg = 'base02' }
+'ui.statusline.select' = { bg = 'base02' }
+
+'ui.bufferline' = { fg = 'base03', bg = 'base01' }
+'ui.bufferline.active' = { fg = 'base05', bg = 'base03' }
+'ui.bufferline.background' = { bg = 'base00' }
+
+'ui.popup' = { bg = 'base01' }
+'ui.window' = { fg = 'base03' }
+
+'ui.help' = { fg = 'base04', bg = 'base01' }
+
+'ui.text' = { fg = 'base04' }
+'ui.text.focus' = { bg = 'base01', fg = 'base04' }
+'ui.text.info' = { fg = 'base04' }
+
+'ui.virtual.whitespace' = { fg = 'base01' }
+'ui.virtual.ruler' = { bg = 'base00' }
+
+'ui.menu' = { fg = 'base04', bg = 'base01' }
+'ui.menu.selected' = { bg = 'base02', fg = 'base04' }
+
+'ui.selection' = { bg = 'base01' }
+
+# ---------------- Diagnostics -----------------
+
+'warning' = { fg = 'base09' }
+'error' = { fg = 'base08', modifiers = ['bold'] }
+'info' = { fg = 'base0D', modifiers = ['bold'] }
+'hint' = { fg = 'base0D', modifiers = ['bold'] }
+
+'diagnostic.hint' = { underline = { color = 'base08', style = "curl" } }
+'diagnostic.error' = { underline = { color = 'base08', style = "curl" } }
+'diagnostic.info' = { underline = { color = 'base0D', style = "curl" } }
+'diagnostic.warning' = { underline = { color = 'base0A', style = "curl" } }
+
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+'special' = { fg = 'base09' }
+
+# ---------------- Palette -----------------
+
+[palette]
+base00 = "#2E3440"
+base01 = "#3B4252"
+base02 = "#434C5E"
+base03 = "#4C566A"
+base04 = "#D8DEE9"
+base05 = "#E5E9F0"
+base06 = "#ECEFF4"
+base07 = "#8FBCBB"
+
+base08 = "#E06C75"
+base09 = "#D19A66"
+base0A = "#E5C07B"
+base0B = "#98C379"
+base0C = "#56B6C2"
+base0D = "#61AFEF"
+base0E = "#C678DD"
+base0F = "#B8B8B8"

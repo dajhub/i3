@@ -1,29 +1,34 @@
 # i3wm Configuration
-# Generated from Hyprland keybindings.conf
 
 #exec --no-startup-id mpv --no-input-default-bindings --no-osd-bar --fs --audio-device=auto /home/jotalea/.jotalea/assets/supercell.mp4
 #exec --no-startup-id sleep 1 && cd /run/media/jotalea/JotaSD/audio/music/ && ./list.sh -p --paused
 
-# Set modifier key (Super/Windows)
+# ----- MODIFIER KEY (Super/Windows) -----
+
 set $mod Mod4
 
-exec --no-startup-id xrandr -s 1920x1080
+# ----- MONITOR DISPLAY -----
+exec --no-startup-id xrandr -s 1366x768
 
-# Application variables
+# ----- GAPS -----
+gaps inner 3
+gaps outer 2
+
+# ----- APPLICATION VARIABLES -----
 set $TERMINAL kitty
-set $EDITOR code
-set $EXPLORER dolphin
-set $BROWSER firefox
+set $EDITOR vscodium
+set $BROWSER vivaldi
 
-# Basic keybindings
-bindsym $mod+Return exec window
-bindsym $mod+e exec $EXPLORER
-bindsym $mod+t exec $TERMINAL
+# ----- BASIC KEYBIDINGS -----
+bindsym $mod+Return exec $TERMINAL
 bindsym $mod+b exec $BROWSER
-bindsym $mod+a exec --no-startup-id rofi -config ~/.config/i3/rofi/config.rasi -show drun  # Application launcher
-bindsym $mod+r exec --no-startup-id rofi -config ~/.config/i3/rofi/config.rasi -show run
+bindsym $mod+v exec $EDITOR
+bindsym $mod+space exec --no-startup-id rofi -config ~/.config/i3/rofi/config.rasi -show drun  # Application launcher
+bindsym $mod+w exec --no-startup-id rofi -config ~/.config/i3/rofi/config.rasi -show window # Lists windows
+bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/scripts/reload.sh
+bindsym $mod+Shift+e exec --no-startup-id rofi -config ~/.config/i3/rofi/config.rasi -show filebrowser # Show menus
 
-bindsym $mod+w floating toggle
+bindsym $mod+c floating toggle
 
 # Workspace navigation (1-10)
 bindsym $mod+1 workspace number 1
@@ -37,7 +42,8 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
-# Window management
+# ----- WINDOW MANAGEMENT -----
+
 bindsym $mod+q kill
 bindsym $mod+Delete exec i3-msg exit
 bindsym $mod+Shift+Delete restart
@@ -49,6 +55,12 @@ bindsym $mod+Left focus left
 bindsym $mod+Right focus right
 bindsym $mod+Up focus up
 bindsym $mod+Down focus down
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # Window resizing
 bindsym $mod+Shift+Right resize grow width 30px
@@ -62,14 +74,13 @@ floating_modifier Mod4
 bindsym $mod+button1 move window
 bindsym $mod+button3 resize window
 
-# Application shortcuts
-bindsym $mod+c exec $EDITOR
+# ----- LAYOUT MODES -----
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout stacking
+bindsym $mod+e layout toggle split
 
-# Rofi menus
-bindsym $mod+Tab exec --no-startup-id rofi -show window  # Window switcher
-bindsym $mod+Shift+e exec --no-startup-id rofi -show filebrowser
+# ----- HARDWARE CONTROLS -----
 
-# Hardware controls
 # Audio
 bindsym XF86AudioMute exec pactl set-sink-volume @DEFAULT_SINK@ toggle
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -85,14 +96,25 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec /usr/bin/brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec /usr/bin/brightnessctl set 10%-
 
-# Utilities
+# ----- SCREENSHOTS -----
 
-# Screenshots
-bindsym Shift+Print exec maim -s | xclip -selection clipboard -t image/png && notify-send "Screenshot Copied to the clipboard"
-bindsym Control+Print exec maim ~/Pictures/$(date +%y%m%d_%Hh%Mm%Ss_screenshot.png)
-bindsym $mod+Print exec --no-startup-id maim | tee ~/Pictures/$(date +%y%m%d_%Hh%Mm%Ss_screenshot.png) | xclip -selection clipboard -t image/png && notify-send "Screenshot Saved"
-bindsym Print exec maim | xclip -selection clipboard -t image/png
+# Area selection to clipboard
+bindsym Shift+Print exec --no-startup-id sh -c 'maim -s | xclip -selection clipboard -t image/png && notify-send "Screenshot" "Copied to clipboard"'
 
+# Fullscreen to file
+bindsym Control+Print exec --no-startup-id sh -c 'maim ~/Pictures/Screenshots/$(date +%y%m%d_%Hh%Mm%Ss_screenshot.png) && notify-send "Screenshot" "Saved to ~/Pictures/Screenshots"'
+
+# Fullscreen to both file AND clipboard (using tee)
+bindsym $mod+Print exec --no-startup-id sh -c 'maim | tee ~/Pictures/Screenshots/$(date +%y%m%d_%Hh%Mm%Ss_screenshot.png) | xclip -selection clipboard -t image/png && notify-send "Screenshot" "Saved to ~/Pictures/Screenshots and Copied"'
+
+# Fullscreen to clipboard only
+bindsym Print exec --no-startup-id sh -c 'maim | xclip -selection clipboard -t image/png && notify-send "Screenshot" "Copied to clipboard"'
+
+# Area selection to file
+bindsym $mod+Shift+Print exec --no-startup-id sh -c 'maim -s ~/Pictures/Screenshots/$(date +%y%m%d_%Hh%Mm%Ss_screenshot.png) && notify-send "Screenshot" "Region saved to ~/Pictures/Screenshots"'
+
+
+# ----- WORKSPACE CONTROLS -----
 # Workspace management
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
@@ -105,38 +127,23 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-# change workspaces with Ctrl + Super + Left/Right
-bindsym Ctrl+$mod+Right workspace next
-bindsym Ctrl+$mod+Left workspace prev
+# switch between workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+grave workspace prev
 
-# Scratchpad
+# ----- SCRATCHPAD -----
+
 bindsym $mod+Shift+s move scratchpad
-bindsym $mod+s scratchpad show
+bindsym $mod+Shift+z scratchpad show
 
-# Disable borders entirely
-for_window [class=".*"] title_format " "
-for_window [class=".*"] border pixel 0
-default_border pixel 0
-default_floating_border pixel 0
 
-# Font
-font pango:JetBrains Mono 10
+# ----- CLIPBOARD MANAGER -----
 
-# Colors
-set $bg      #EAF6FA
-set $fg      #2D2F30
-set $accent  #747C80
-set $urgent  #A83A3A
-set $inactive_bg #CBD5D8
-set $inactive_border #A9B1B4
-set $black   #000000
+bindsym $mod+Shift+v exec --no-startup-id ~/.config/i3/scripts/clipboard-manager.sh menu
+bindsym $mod+Control+v exec --no-startup-id ~/.config/i3/scripts/clipboard-manager.sh tui
 
-# Window colors
-client.focused          $accent   $accent   $bg      $fg
-client.unfocused        $inactive_bg $inactive_border $bg $fg
-client.focused_inactive $inactive_bg $inactive_border $bg $fg
-client.urgent           $urgent   $urgent   $bg      $fg
-client.background       $bg
+
+# ----- ACTIONS & DEFAULTS -----
 
 # Enable focus follows mouse
 focus_follows_mouse yes
@@ -150,27 +157,73 @@ focus_on_window_activation smart
 # Automatically focus windows when switching workspaces
 workspace_auto_back_and_forth no
 
-# i3bar (con i3status o similar)
+# ----- APPEARANCE -----
+
+# Disable borders entirely
+#for_window [class=".*"] title_format " "
+for_window [class=".*"] border pixel 0
+default_border pixel 2
+default_floating_border pixel 0
+
+# Font
+font pango:JetBrains Mono 8
+
+# Colors
+set $bg      #EAF6FA
+set $fg      #2D2F30
+set $accent  #747C80
+set $urgent  #A83A3A
+set $inactive_bg #CBD5D8
+set $inactive_border #A9B1B4
+set $black   #000000
+
+# Window Colors
+# Target                Border            Background        Text        Indicator     Child Border
+client.focused          $accent           $accent           $bg         $accent       $accent
+client.unfocused        $inactive_border  $inactive_bg      $fg         $inactive_bg  $inactive_bg
+client.focused_inactive $inactive_border  $inactive_bg      $fg         $inactive_bg  $inactive_bg
+client.urgent           $urgent           $urgent           $bg         $urgent       $urgent
+
+
+# ----- AUTOSTART -----
+
+# Polybar
 exec_always --no-startup-id sleep 1 && polybar --config=~/.config/i3/polybar/config.ini main 2>&1 | tee -a /tmp/polybar.log &
 
-
-
-# picom
+# Picom
 exec_always --no-startup-id sleep 1 && picom --config ~/.config/i3/picom.conf
 
 # Wallpaper
-exec_always --no-startup-id sleep 1 && feh --bg-scale ~/.jotalea/assets/nullscapes.png
+exec_always --no-startup-id sleep 1 && feh --bg-scale ~/.config/i3/wallpapers/warriorHorse.jpg
 #exec_always --no-startup-id nitrogen --set-scaled ~/.jotalea/assets/nullscapes.png
 
 # Keyboard layout
 exec --no-startup-id setxkbmap gb
 
+# Autotiling script
+# https://github.com/nwg-piotr/autotiling
+# yay -S autotiling (in AUR)
+exec_always --no-startup-id autotiling
+
+# Start clipboard monitor on startup
+exec --no-startup-id ~/.config/i3/scripts/clipboard-manager.sh monitor
+
+
+# Start Dunst notification daemon
+exec_always --no-startup-id dunst
+
+
+# ----- FLOATNG -----
+
 # make kitty smaller and floating when opened (optional)
 for_window [class="kitty"] floating enable, resize set 640 400
 
-# Clipboard manager
-bindsym $mod+Shift+v exec --no-startup-id ~/.jotalea/scripts/clipboard-manager.sh menu
-bindsym $mod+Control+v exec --no-startup-id ~/.jotalea/scripts/clipboard-manager.sh tui
+# make pavucontrol smaller and floating when opened 
+for_window [class="pavucontrol"] floating enable, resize set 640 400
 
-# Start clipboard monitor on startup
-exec --no-startup-id ~/.jotalea/scripts/clipboard-manager.sh monitor
+# make nm-connection-editor smaller and floating when opened 
+for_window [class="Nm-connection-editor"] floating enable, resize set 640 400
+
+
+
+

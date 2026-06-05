@@ -1,0 +1,116 @@
+/* ==========================================
+   Bluetooth Catppuccin Frappe 
+   ========================================== */
+
+* {
+    /* Catppuccin Frappe Palette */
+    bg-col:      #303446;
+    bg-col-light:#292c3c;
+    border-col:  #babbf1;
+    selected-col:#414559;
+    text-col:    #c6d0f5;
+    blue:        #8ca0f3;
+    urgent:      #e78284;
+
+    width: 500px;
+    font: "JetBrainsMono Nerd Font 9";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height:           250px;
+    border:           1px;
+    border-color:     @border-col;
+    border-radius:    0px;
+    background-color: @bg-col;
+}
+
+mainbox {
+    background-color: @bg-col;
+    padding:          15px;
+}
+
+inputbar {
+    enabled:          false;
+    children:         [prompt,entry];
+    background-color: @bg-col;
+    border-radius:    5px;
+    padding:          2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding:          6px;
+    text-color:       @bg-col;
+    border-radius:    3px;
+    margin:           0px 10px 0px 0px;
+}
+
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+}
+
+entry {
+    padding:          6px;
+    margin:           0px 0px 0px 5px;
+    text-color:       @text-col;
+    background-color: @bg-col;
+}
+
+listview {
+    border:           0px 0px 0px;
+    padding:          6px 0px 0px;
+    margin:           10px 0px 0px 0px;
+    columns:          1;
+    lines:            8;
+    background-color: @bg-col;
+}
+
+element {
+    padding:          5px;
+    background-color: @bg-col;
+    text-color:       @text-col  ;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected {
+    background-color: @selected-col ;
+    text-color:       @blue ;
+    border-radius:    5px;
+}
+
+mode-switcher {
+    spacing: 0;
+}
+
+button {
+    padding:          10px;
+    background-color: @bg-col-light;
+    text-color:       @text-col;
+    vertical-align:   0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @bg-col;
+  text-color:       @blue;
+}
+
+message {
+    background-color: @bg-col-light;
+    margin:           5px;
+    padding:          5px;
+    border-radius:    5px;
+}
+
+textbox {
+    text-color:       @text-col;
+}
