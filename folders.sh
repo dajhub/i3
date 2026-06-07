@@ -22,18 +22,14 @@ sync_file() {
 # Directories
 sync_dir ".config/gtk-3.0" ".config/gtk-3.0"
 sync_dir ".config/helix" ".config/helix"
-sync_dir ".config/hypr" ".config/hypr"
+sync_dir ".config/dunst" ".config/dunst"
 sync_dir ".config/kitty" ".config/kitty"
-sync_dir ".config/mango" ".config/mango"
+sync_dir ".config/i3" ".config/i3"
 sync_dir ".config/micro" ".config/micro"
-sync_dir ".config/rofi" ".config/rofi"
-sync_dir ".config/waybar" ".config/waybar"
 sync_dir ".config/yazi" ".config/yazi"
 
-sync_dir "Pictures" "Pictures"
-
 sync_dir ".fonts" ".fonts"
-
+sync_dir ".themes" ".themes"
 
 # Files
 sync_file ".zshrc" ".zshrc"
