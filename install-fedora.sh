@@ -14,7 +14,7 @@ NC='\033[0m'
 CONFIG_DIR="$HOME/.config"
 DOTFILES_SRC="$HOME/i3" 
 WALLPAPERS_DIR="$HOME/Pictures/Wallpapers"
-SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
+SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 
 die() { echo -e "${RED}ERROR: $*${NC}" >&2; exit 1; }
 msg() { echo -e "${CYAN}$*${NC}"; }
@@ -56,6 +56,7 @@ fi
 
 
 # -- 5. Installing bzmenu for bluetooth ---
+section "INSTALLING BZMENU"
 sudo dnf install rust cargo pkg-config dbus-devel
 git clone https://github.com/e-tho/bzmenu
 cd bzmenu
@@ -65,10 +66,12 @@ cd
 
 # -- 6. Installing autotiling for i3 ---
 # Enable the community repo that packages autotiling
+section "AUTOTILING"
 sudo dnf copr enable erikreider/packages
 sudo dnf install autotiling
 
 # -- 7. Installing betterlockscreen ---
+section "BETTERLOCKSCREEN"
 sudo dnf install -y autoconf automake cairo-devel fontconfig gcc libev-devel libjpeg-turbo-devel libXinerama libxkbcommon-devel libxkbcommon-x11-devel libXrandr pam-devel pkgconf xcb-util-image-devel xcb-util-xrm-devel giflib-devel
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
@@ -79,6 +82,7 @@ sudo dnf install -y ImageMagick bc
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
 
 # -- 8. Installing Flathub ---
+section "FLATPACK, FLATHUB & PACKAGES"
 sudo dnf install -y flatpak flatseal
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo dnf upgrade --refresh -y
@@ -89,13 +93,13 @@ flatpak install flathub net.cozic.joplin_desktop
 flatpak install flathub org.onlyoffice.desktopeditors
 
 
-# --- 7. Configure Shell ---
+# --- 9. Configure Shell ---
 section "CONFIGURING SHELL"
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 chsh -s /usr/bin/zsh
 
 
-# --- 8. Configuration & Dotfiles ---
+# --- 10. Configuration & Dotfiles ---
 section "SETTING UP FOLDERS & DOTFILES"
 
 mkdir -p "$SCREENSHOTS_DIR"
@@ -116,7 +120,7 @@ else
 fi
 
 
-# --- 9. Enable services ---
+# --- 11. Enable services ---
 sudo systemctl start bluetooth
 sudo systemctl enable bluetooth
 sudo systemctl enable cups
