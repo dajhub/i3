@@ -30,6 +30,7 @@ sync_dir ".config/yazi" ".config/yazi"
 
 sync_dir ".fonts" ".fonts"
 sync_dir ".themes" ".themes"
+sync_dir ".icons" ".icons"
 
 # Files
 sync_file ".zshrc" ".zshrc"

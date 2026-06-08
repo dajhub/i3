@@ -29,7 +29,7 @@ section() {
 
 
 # --- 3. Packages Definitions ---
-PACKAGES_CORE=(i3 i3status xorg-x11-server-Xorg xorg-x11-xinit NetworkManager-wifi lightdm slick-greeter numix-icon-theme)
+PACKAGES_CORE=(i3 i3status xorg-x11-server-Xorg xorg-x11-xinit NetworkManager-wifi lightdm slick-greeter)
 PACKAGES_UI=(polybar picom rofi dunst feh)
 PACKAGES_SCREENSHOTS=(xclip)
 PACKAGES_TERMINAL=(kitty zsh)

@@ -83,6 +83,8 @@ export EDITOR="helix"
 export VISUAL="helix"
 
 export PATH=$PATH:/usr/sbin
+export PATH="$HOME/.local/bin:$PATH"
+
 # ====================================================================
 # 7. YAZI
 # ====================================================================
