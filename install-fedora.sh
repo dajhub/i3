@@ -2,6 +2,7 @@
 
 set -e
 
+
 # --- 1. Variables ---
 MAGENTA='\033[35m'
 RED='\033[0;31m'
@@ -18,6 +19,7 @@ die() { echo -e "${RED}ERROR: $*${NC}" >&2; exit 1; }
 msg() { echo -e "${CYAN}$*${NC}"; }
 warn() { echo -e "${YELLOW}WARNING: $*${NC}"; }
 
+
 # --- 2. Section Headers
 section() {
     echo -e "${MAGENTA}=========================================${NC}"
@@ -25,20 +27,19 @@ section() {
     echo -e "${MAGENTA}=========================================${NC}\n"
 }
 
-sudo pacman -Syu
 
 # --- 3. Packages Definitions ---
-PACKAGES_CORE=(i3 i3status xorg-x11-server-Xorg xorg-x11-xinit lightdm slick-greeter numix-icon-theme)
-PACKAGES_UI=(polybar picom rofi dunst)
+PACKAGES_CORE=(i3 i3status xorg-x11-server-Xorg xorg-x11-xinit NetworkManager-wifi lightdm slick-greeter numix-icon-theme)
+PACKAGES_UI=(polybar picom rofi dunst feh)
 PACKAGES_SCREENSHOTS=(xclip)
 PACKAGES_TERMINAL=(kitty zsh)
 PACKAGES_EDITORS=(micro helix)
 #PACKAGES_FILE_MANAGER=(yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick unzip)
 PACKAGES_THUNAR=(gvfs Thunar thunar-archive-plugin thunar-volman tumbler xarchiver unzip)
 #PACKAGES_FONTS=(inter-font ttf-jetbrains-mono ttf-roboto-serif ttf-hellvetica ttf-ubuntu-font-family)
-PACKAGES_AUDIO=(pipewire pipewire-pulseaudio pipewire-alsa wireplumber alsa-utils bluez bluez-libs)
-#PACKAGES_APPEARANCE=(brightnessctl)
-PACKAGES_UTILITIES=(curl xrandr viewnior htop rsync fastfetch)
+PACKAGES_AUDIO=(pipewire pipewire-pulseaudio pipewire-alsa wireplumber pavucontrol alsa-utils bluez bluez-libs)
+PACKAGES_APPEARANCE=(brightnessctl)
+PACKAGES_UTILITIES=(curl lua  xrandr viewnior htop rsync fastfetch)
 PACKAGES_PRINTER=(hplip cups ipp-usb system-config-printer cups-pk-helper)
 
 
@@ -47,34 +48,39 @@ ONLY_CONFIG="${ONLY_CONFIG:-false}"
 if [ "$ONLY_CONFIG" = false ]; then
     section "INSTALLING ALL PACKAGES"
     
-    ALL_PACKAGES=("${PACKAGES_CORE[@]}" "${PACKAGES_UI[@]}" "${PACKAGES_SCREENSHOTS[@]}" "${PACKAGES_TERMINAL[@]}" "${PACKAGES_EDITORS[@]}" "${PACKAGES_FILE_MANAGER[@]}" "${PACKAGES_FONTS[@]}" "${PACKAGES_AUDIO[@]}" "${PACKAGES_APPEARANCE[@]}" "${PACKAGES_UTILITIES[@]}" "${PACKAGES_PRINTER[@]}")
+    ALL_PACKAGES=("${PACKAGES_CORE[@]}" "${PACKAGES_UI[@]}" "${PACKAGES_SCREENSHOTS[@]}" "${PACKAGES_TERMINAL[@]}" "${PACKAGES_EDITORS[@]}" "${PACKAGES_THUNAR[@]}" "${PACKAGES_FONTS[@]}" "${PACKAGES_AUDIO[@]}" "${PACKAGES_APPEARANCE[@]}" "${PACKAGES_UTILITIES[@]}" "${PACKAGES_PRINTER[@]}")
     
     sudo dnf install -y "${ALL_PACKAGES[@]}" || die "package installation failed"
 fi
 
 
-# -- 5. Installing RPM Fusion & Flathub ---
+# -- 5. Installing bzmenu for bluetooth ---
+sudo dnf install rust cargo pkg-config dbus-devel
+git clone https://github.com/e-tho/bzmenu
+cd bzmenu
+cargo build --release
+install -Dm755 target/release/bzmenu ~/.local/bin/bzmenu
+cd
 
 
-sudo dnf install -y \
-  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install -y \
-  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+# -- 6. Installing Flathub ---
+sudo dnf install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo dnf upgrade --refresh -y
-
+# Packages
 flatpak install flathub io.gitlab.librewolf-community
+flatpak install flathub com.vivaldi.Vivaldi
+flatpak install flathub net.cozic.joplin_desktop
+flatpak install flathub org.onlyoffice.desktopeditors
 
 
-
-# --- 6. Configure Shell ---
+# --- 7. Configure Shell ---
 section "CONFIGURING SHELL"
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 chsh -s /usr/bin/zsh
 
 
-
-# --- 7. Configuration & Dotfiles ---
+# --- 8. Configuration & Dotfiles ---
 section "SETTING UP FOLDERS & DOTFILES"
 
 mkdir -p "$SCREENSHOT_DIR"
@@ -94,12 +100,13 @@ else
 fi
 
 
-# --- 8. Enable services ---
+# --- 9. Enable services ---
 sudo systemctl start bluetooth
 sudo systemctl enable bluetooth
 sudo systemctl enable cups
 sudo systemctl enable lightdm
 systemctl set-default graphical.target
+
 
 ### END ###
 section "FINISHED: REBOOT..."
