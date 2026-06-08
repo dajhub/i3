@@ -21,7 +21,8 @@ sync_file() {
 
 
 # config directories
-sync_dir "$HOME/.config/gtk-3.0" ".config/gtk-"3.0
+sync_dir "$HOME/.config/betterlockscreen" ".config/betterlockscreen"
+sync_dir "$HOME/.config/gtk-3.0" ".config/gtk-3.0"
 sync_dir "$HOME/.config/helix" ".config/helix"
 sync_dir "$HOME/.config/dunst" ".config/dunst"
 sync_dir "$HOME/.config/kitty" ".config/kitty"
