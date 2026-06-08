@@ -27,6 +27,7 @@ bindsym $mod+Shift+e exec --no-startup-id rofi -config ~/.config/i3/rofi/config.
 
 bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/scripts/reload.sh # Reload
 
+bindsym $mod+Control+l exec --no-startup-id betterlockscreen -l dim
 bindsym $mod+Control+Delete exec --no-startup-id systemctl poweroff
 bindsym $mod+Control+r exec --no-startup-id systemctl reboot
 bindsym $mod+Delete exec --no-startup-id i3-msg exit
@@ -196,16 +197,21 @@ exec_always --no-startup-id autotiling
 # Start Dunst notification daemon
 exec_always --no-startup-id dunst
 
+# Timeout & Idling
+# Set the idle timeout to 5 minutes (300 seconds)
+exec --no-startup-id xset s 300 300
+# Let xss-lock handle the idle event and system sleep events
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dim
+
 
 # ----- FLOATNG -----
+# Make kitty floating
+for_window [class="kitty"] floating enable, resize set 640 400, move position center
 
-# make kitty smaller and floating when opened (optional)
-for_window [class="kitty"] floating enable, resize set 640 400
-
-# make pavucontrol smaller and floating when opened 
+# Make pavucontrol smaller and floating when opened 
 for_window [class="pavucontrol"] floating enable, resize set 640 400
 
-# make nm-connection-editor smaller and floating when opened 
+# Make nm-connection-editor smaller and floating when opened 
 for_window [class="Nm-connection-editor"] floating enable, resize set 640 400
 
 

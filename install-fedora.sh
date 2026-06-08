@@ -40,7 +40,7 @@ PACKAGES_THUNAR=(gvfs Thunar thunar-archive-plugin thunar-volman tumbler xarchiv
 #PACKAGES_FONTS=(inter-font ttf-jetbrains-mono ttf-roboto-serif ttf-hellvetica ttf-ubuntu-font-family)
 PACKAGES_AUDIO=(pipewire pipewire-pulseaudio pipewire-alsa wireplumber pavucontrol alsa-utils bluez bluez-libs)
 PACKAGES_APPEARANCE=(brightnessctl)
-PACKAGES_UTILITIES=(curl lua  xrandr viewnior htop rsync fastfetch)
+PACKAGES_UTILITIES=(curl lua  xrandr xset xdg-user-dirs viewnior htop rsync fastfetch)
 PACKAGES_PRINTER=(hplip cups ipp-usb system-config-printer cups-pk-helper)
 
 
@@ -68,9 +68,18 @@ cd
 sudo dnf copr enable erikreider/packages
 sudo dnf install autotiling
 
+# -- 7. Installing betterlockscreen ---
+sudo dnf install -y autoconf automake cairo-devel fontconfig gcc libev-devel libjpeg-turbo-devel libXinerama libxkbcommon-devel libxkbcommon-x11-devel libXrandr pam-devel pkgconf xcb-util-image-devel xcb-util-xrm-devel giflib-devel
+git clone https://github.com/Raymo111/i3lock-color.git
+cd i3lock-color
+./install-i3lock-color.sh
 
-# -- 6. Installing Flathub ---
-sudo dnf install -y flatpak
+sudo dnf install -y ImageMagick bc
+
+wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
+
+# -- 8. Installing Flathub ---
+sudo dnf install -y flatpak flatseal
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo dnf upgrade --refresh -y
 # Packages
