@@ -202,7 +202,7 @@ exec --no-startup-id setxkbmap gb
 
 # Autotiling script
 # https://github.com/nwg-piotr/autotiling
-# yay -S autotiling (in AUR)
+# yay -S autotiling (in AUR if using Arch)
 exec_always --no-startup-id autotiling
 
 # Start clipboard monitor on startup

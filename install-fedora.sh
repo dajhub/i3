@@ -63,6 +63,11 @@ cargo build --release
 install -Dm755 target/release/bzmenu ~/.local/bin/bzmenu
 cd
 
+# -- 6. Installing autotiling for i3 ---
+# Enable the community repo that packages autotiling
+sudo dnf copr enable erikreider/packages
+sudo dnf install autotiling
+
 
 # -- 6. Installing Flathub ---
 sudo dnf install -y flatpak

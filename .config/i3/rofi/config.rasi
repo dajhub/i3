@@ -1,18 +1,21 @@
 /* Rofi configuration using i3wm colors */
 configuration {
     modi: "drun,run,window";
+    display-drun: "  ";
     show-icons: true;
-    font: "Ubuntu 9";
+    font: "Ubuntu Nerd Font 10";
 }
 
 listview {
     lines: 8;
+    scrollbar: false;
+    border: 0px;
 }
 
 * {
-    bg: #EAF6FA;
+    bg: #e6e9ef;
     fg: #2D2F30;
-    accent: #747C80;
+    accent: #b5bfe2;
     urgent: #A83A3A;
     inactive: #CBD5D8;
 }
@@ -22,6 +25,30 @@ window {
     width: 520px;
     border: 0px solid;
     padding: 20px;
+    border-radius: 5px;
+}
+
+inputbar {
+    padding: 10px 8px;
+    border: 0px;
+    border-color: transparent;
+}
+
+entry {
+    background-color: @bg;
+    text-color: @fg;
+    border: @accent;
+    margin: 0px 0px 0px 10px;
+    font: "Ubuntu Nerd Font 14";
+}
+
+prompt {
+    font: "Ubuntu Nerd Font 14";
+}
+
+separator {
+    enabled: false;
+    border: 0px;
 }
 
 element {
@@ -42,7 +69,8 @@ element alternate.normal {
 
 element selected.normal {
     background-color: @accent;
-    text-color: @bg;
+    text-color: @fg;
+    border-radius: 5px;
 }
 
 entry {
