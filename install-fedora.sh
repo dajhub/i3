@@ -13,7 +13,8 @@ NC='\033[0m'
 
 CONFIG_DIR="$HOME/.config"
 DOTFILES_SRC="$HOME/i3" 
-SCREENSHOT_DIR="$HOME/Pictures/Wallpapers"
+WALLPAPERS_DIR="$HOME/Pictures/Wallpapers"
+SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 
 die() { echo -e "${RED}ERROR: $*${NC}" >&2; exit 1; }
 msg() { echo -e "${CYAN}$*${NC}"; }
@@ -31,7 +32,7 @@ section() {
 # --- 3. Packages Definitions ---
 PACKAGES_CORE=(i3 i3status xorg-x11-server-Xorg xorg-x11-xinit NetworkManager-wifi lightdm slick-greeter)
 PACKAGES_UI=(polybar picom rofi dunst feh)
-PACKAGES_SCREENSHOTS=(xclip)
+PACKAGES_SCREENSHOTS=(xclip maim)
 PACKAGES_TERMINAL=(kitty zsh)
 PACKAGES_EDITORS=(micro helix)
 #PACKAGES_FILE_MANAGER=(yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick unzip)
@@ -83,7 +84,8 @@ chsh -s /usr/bin/zsh
 # --- 8. Configuration & Dotfiles ---
 section "SETTING UP FOLDERS & DOTFILES"
 
-mkdir -p "$SCREENSHOT_DIR"
+mkdir -p "$SCREENSHOTS_DIR"
+mkdir -p "$WALLPAPERS_DIR"
 mkdir -p "$CONFIG_DIR"
 
 if [ -d "$DOTFILES_SRC" ]; then

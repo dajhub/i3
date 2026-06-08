@@ -1,5 +1,7 @@
 # i3
 
+![i3-desktop](assets/i3.png)
+
 ### Introduction
 A fedora minimal install via [Fedora Everything](https://fedoraproject.org/misc/#everything), i.e. no initial desktop.
 
