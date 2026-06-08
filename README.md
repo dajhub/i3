@@ -49,13 +49,13 @@ EOF
 <details>
 <summary>Keyboard shortcuts for i3</summary>
 
-# i3wm Configuration Shortcuts Reference
+### i3wm Configuration Shortcuts Reference
 
 *Note: `$mod` is mapped to the **Super / Windows** key.*
 
 ---
 
-##  Basic Keybindings
+####  Basic Keybindings
 
 | Shortcut | Action | Command / Target |
 | :--- | :--- | :--- |
@@ -69,7 +69,7 @@ EOF
 
 ---
 
-##  System Controls
+####  System Controls
 
 | Shortcut | Action | Command / Target |
 | :--- | :--- | :--- |
@@ -79,7 +79,7 @@ EOF
 
 ---
 
-##  Window Management
+####  Window Management
 
 | Shortcut | Action | Command / Target |
 | :--- | :--- | :--- |
@@ -96,7 +96,7 @@ EOF
 | `$mod` + `Shift` + `k` | Move Window Up | Rearrange layout |
 | `$mod` + `Shift` + `l` | Move Window Right | Rearrange layout |
 
-###  Window Resizing
+##### Window Resizing
 | Shortcut | Action | Modification |
 | :--- | :--- | :--- |
 | `$mod` + `Shift` + `Right` | Grow Window Width | `30px` |
@@ -104,7 +104,7 @@ EOF
 | `$mod` + `Shift` + `Up` | Shrink Window Height | `30px` |
 | `$mod` + `Shift` + `Down` | Grow Window Height | `30px` |
 
-###  Mouse Controls
+#####  Mouse Controls
 | Shortcut | Action |
 | :--- | :--- |
 | `$mod` + `button1` (Left Click & Drag) | Move Window |
@@ -112,7 +112,7 @@ EOF
 
 ---
 
-##  Workspace Controls
+####  Workspace Controls
 
 | Shortcut | Action |
 | :--- | :--- |
@@ -123,7 +123,7 @@ EOF
 
 ---
 
-##  Layout Modes
+####  Layout Modes
 
 | Shortcut | Action |
 | :--- | :--- |
@@ -133,7 +133,7 @@ EOF
 
 ---
 
-##  Screenshots
+####  Screenshots
 
 | Shortcut | Action | Destination |
 | :--- | :--- | :--- |
@@ -145,7 +145,7 @@ EOF
 
 ---
 
-##  Hardware Controls
+####  Hardware Controls
 
 | Shortcut | Action | Command / Target |
 | :--- | :--- | :--- |
