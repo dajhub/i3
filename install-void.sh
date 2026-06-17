@@ -72,6 +72,7 @@ sudo xbps-install -y \
   pipewire \
   wireplumber \
   alsa-pipewire \
+  alsa-utils \
   pulseaudio-utils \
   pamixer
 
