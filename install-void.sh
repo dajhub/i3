@@ -13,12 +13,13 @@ echo "=== Starting Void Linux i3 + Polybar + SDDM Installation ==="
 echo "--> Updating XBPS database..."
 sudo xbps-install -S
 
-# 2. Display Server & Graphics
+# 2. Display Server, NetworkManager & Graphics
 echo "--> Installing X11 Display Server & Graphics Drivers"
 sudo xbps-install -y \
   xorg-minimal \
   xf86-video-intel \
-  mesa-dri
+  mesa-dri \
+  NetworkManager
 
 # 2a. Window Manager & Desktop Environment
 echo "--> Installing Window Manager and Desktop Components"
@@ -133,6 +134,16 @@ fi
 # Enable Bluetooth Daemon
 if [ ! -L /var/service/bluetoothd ]; then
   sudo ln -s /etc/sv/bluetoothd /var/service/
+fi
+
+# Enable NetworkManager
+if [ ! -L /var/service/NetworkManager ]; then
+  sudo ln -s /etc/sv/NetworkManager /var/service/
+fi
+
+# Disable the conflicting dhcpcd service if it was running
+if [ -L /var/service/dhcpcd ]; then
+  sudo rm /var/service/dhcpcd
 fi
 
 # Enable SDDM (This will bring up the graphical login screen on boot)
