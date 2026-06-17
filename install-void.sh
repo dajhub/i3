@@ -71,7 +71,7 @@ msg "Installing PipeWire and Audio Utilities"
 sudo xbps-install -y \
   pipewire \
   wireplumber \
-  alsa-plugins-pipewire \
+  alsa-pipewire \
   pulseaudio-utils \
   pamixer
 
