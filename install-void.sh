@@ -79,7 +79,6 @@ sudo xbps-install -y \
 msg "Installing Bluetooth Stack and Managers"
 sudo xbps-install -y \
   bluez \
-  bluez-utils \
   libspa-bluetooth \
   blueman
   
