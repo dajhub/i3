@@ -203,6 +203,10 @@ exec --no-startup-id xset s 300 300
 # Let xss-lock handle the idle event and system sleep events
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dim
 
+# NEEDED WITH VOID (remove with Arch/Fedora) Start PipeWire audio engine and session manager
+exec_always --no-startup-id pipewire
+exec_always --no-startup-id wireplumber
+
 
 # ----- FLOATNG -----
 # Make kitty floating
