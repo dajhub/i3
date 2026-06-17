@@ -65,8 +65,17 @@ sudo xbps-install -y \
   zsh \
   micro \
   neovim
-
-# 2f. Utilities
+  
+# 2f. Audio Stack (PipeWire)
+msg "Installing PipeWire and Audio Utilities"
+sudo xbps-install -y \
+  pipewire \
+  wireplumber \
+  alsa-plugins-pipewire \
+  pulseaudio-utils \
+  pamixer
+  
+# 2g. Utilities
 echo "--> Installing System & CLI Utilities"
 sudo xbps-install -y \
   curl \
@@ -76,7 +85,7 @@ sudo xbps-install -y \
   bzmenu \
   rsync
 
-# 2g. File manager
+# 2h. File manager
 echo "--> File Manager"
 sudo xbps-install -y \
   yazi \
@@ -92,7 +101,7 @@ sudo xbps-install -y \
   ImageMagick \
   unzip
 
-# 2h. Browser
+# 2i. Browser
 echo "--> Browser"
 sudo xbps-install -y firefox
 
@@ -149,6 +158,7 @@ if [ -d "$DOTFILES_SRC" ]; then
 else
   warn "Source directory $DOTFILES_SRC not found! Skipping dotfiles."
 fi
+
 
 echo "========================================================="
 echo " Installation complete!"
