@@ -74,8 +74,16 @@ sudo xbps-install -y \
   alsa-plugins-pipewire \
   pulseaudio-utils \
   pamixer
+
+# 2g. Bluetooth
+msg "Installing Bluetooth Stack and Managers"
+sudo xbps-install -y \
+  bluez \
+  bluez-utils \
+  libspa-bluetooth \
+  blueman
   
-# 2g. Utilities
+# 2h. Utilities
 echo "--> Installing System & CLI Utilities"
 sudo xbps-install -y \
   curl \
@@ -85,7 +93,7 @@ sudo xbps-install -y \
   bzmenu \
   rsync
 
-# 2h. File manager
+# 2i. File manager
 echo "--> File Manager"
 sudo xbps-install -y \
   yazi \
@@ -101,7 +109,7 @@ sudo xbps-install -y \
   ImageMagick \
   unzip
 
-# 2i. Browser
+# 2j. Browser
 echo "--> Browser"
 sudo xbps-install -y firefox
 
@@ -122,6 +130,11 @@ if [ ! -L /var/service/seatd ]; then
   sudo ln -s /etc/sv/seatd /var/service/
 fi
 
+# Enable Bluetooth Daemon
+if [ ! -L /var/service/bluetoothd ]; then
+  sudo ln -s /etc/sv/bluetoothd /var/service/
+fi
+
 # Enable SDDM (This will bring up the graphical login screen on boot)
 if [ ! -L /var/service/sddm ]; then
   sudo ln -s /etc/sv/sddm /var/service/
@@ -129,10 +142,10 @@ fi
 
 # Add current user to required groups
 echo "--> Adding user $USER to video, audio, and seat groups..."
-#sudo umask 026
 sudo gpasswd -a "$USER" video
 sudo gpasswd -a "$USER" audio
 sudo gpasswd -a "$USER" _seatd
+sudo gpasswd -a "$USER" bluetooth
 
 # 4. Configuring directories for dotfiles
 echo "--> Preparing config directories..."
