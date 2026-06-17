@@ -49,6 +49,7 @@ sudo xbps-install -y \
   xset \
   xrandr \
   xclip \
+  xss-lock \
   alacritty \
   maim
 
