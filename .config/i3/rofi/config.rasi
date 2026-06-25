@@ -3,7 +3,7 @@ configuration {
     modi: "drun,run,window";
     display-drun: "  ";
     show-icons: true;
-    font: "Ubuntu Nerd Font 10";
+    font: "Ubuntu Nerd Font 9";
 }
 
 listview {

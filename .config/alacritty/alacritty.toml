@@ -1,0 +1,65 @@
+# ─────────────────────────────────────────────────────────────
+# Alacritty — Catppuccin Frappe Theme
+# ─────────────────────────────────────────────────────────────
+
+[window]
+padding = { x = 6, y = 6 }
+dynamic_padding = true
+decorations = "none"
+opacity = 0.96
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+size = 9.0
+
+[colors.primary]
+background = "#303446" # base
+foreground = "#c6d0f5" # text
+
+[colors.cursor]
+text = "#303446"
+cursor = "#f2d5cf" # rosewater
+
+[colors.normal]
+black   = "#51576d" # surface1
+red     = "#e78284" # red
+green   = "#a6d189" # green
+yellow  = "#e5c890" # yellow
+blue    = "#8caaee" # blue
+magenta = "#ca9ee6" # mauve
+cyan    = "#81c8be" # teal
+white   = "#b5bfe2" # subtext1
+
+[colors.bright]
+black   = "#626880" # surface2
+red     = "#ea999c" # maroon
+green   = "#a6d189" # green (same as normal for consistency)
+yellow  = "#e5c890"
+blue    = "#8caaee"
+magenta = "#f4b8e4" # pink
+cyan    = "#99d1db" # sky
+white   = "#c6d0f5" # text
+
+[colors.selection]
+text       = "#303446"
+background = "#626880"
+
+[colors.search.matches]
+foreground = "#303446"
+background = "#a6d189"
+
+[colors.search.focused_match]
+foreground = "#303446"
+background = "#8caaee"
+
+[colors.hints.start]
+foreground = "#303446"
+background = "#e5c890"
+
+[colors.hints.end]
+foreground = "#303446"
+background = "#8caaee"
+

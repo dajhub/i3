@@ -1,0 +1,12 @@
+return {
+  "nvim-neo-tree/neo-tree.nvim",
+  opts = {
+    filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        -- Optional: Set to true if you want to see files ignored by .gitignore
+        -- hide_gitignored = false, 
+      },
+    },
+  },
+}   

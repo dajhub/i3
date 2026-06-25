@@ -36,6 +36,7 @@ sudo xbps-install -y \
   seatd \
   dbus \
   elogind \
+  setxkbmap \
   polkit
 
 # 2c. Desktop Utilities (Lockscreen, Launchers, Notifications)
@@ -66,8 +67,9 @@ sudo xbps-install -y \
   kitty \
   zsh \
   micro \
+  mc \
   neovim
-  
+
 # 2f. Audio Stack (PipeWire)
 msg "Installing PipeWire and Audio Utilities"
 sudo xbps-install -y \
@@ -84,7 +86,7 @@ sudo xbps-install -y \
   bluez \
   libspa-bluetooth \
   blueman
-  
+
 # 2h. Utilities
 echo "--> Installing System & CLI Utilities"
 sudo xbps-install -y \
@@ -93,7 +95,8 @@ sudo xbps-install -y \
   base-devel \
   htop \
   bzmenu \
-  rsync
+  rsync \
+  nodejs
 
 # 2i. File manager
 echo "--> File Manager"
@@ -183,7 +186,6 @@ if [ -d "$DOTFILES_SRC" ]; then
 else
   warn "Source directory $DOTFILES_SRC not found! Skipping dotfiles."
 fi
-
 
 echo "========================================================="
 echo " Installation complete!"

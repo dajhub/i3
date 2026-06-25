@@ -12,7 +12,7 @@ gaps inner 3
 gaps outer 2
 
 # ----- APPLICATION VARIABLES -----
-set $TERMINAL kitty
+set $TERMINAL alacritty
 set $EDITOR vscodium
 set $BROWSER vivaldi
 
@@ -28,8 +28,10 @@ bindsym $mod+Shift+e exec --no-startup-id rofi -config ~/.config/i3/rofi/config.
 bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/scripts/reload.sh # Reload
 
 bindsym $mod+Control+l exec --no-startup-id betterlockscreen -l dim
-bindsym $mod+Control+Delete exec --no-startup-id systemctl poweroff
-bindsym $mod+Control+r exec --no-startup-id systemctl reboot
+#bindsym $mod+Control+Delete exec --no-startup-id systemctl poweroff # For syxtemd
+bindsym $mod+Control+Delete exec --no-startup-id loginctl poweroff # For void
+#bindsym $mod+Control+r exec --no-startup-id systemctl reboot # For systemd
+bindsym $mod+Control+r exec --no-startup-id loginctl reboot # For void
 bindsym $mod+Delete exec --no-startup-id i3-msg exit
 
 # Workspace navigation (1-10)
@@ -47,10 +49,12 @@ bindsym $mod+0 workspace number 10
 # ----- WINDOW MANAGEMENT -----
 bindsym $mod+q kill
 
-bindsym $mod+c floating toggle
-
+#bindsym $mod+c floating toggle
+#bindsym $mod+c floating toggle; resize set 1200 700; move position center
+#bindsym $mod+c floating toggle; resize set 900 700; move position center
 bindsym $mod+g layout toggle split # Toggle group layout
 bindsym $mod+f fullscreen toggle
+bindsym $mod+c floating toggle; [floating] resize set 1300 px 700 px; [floating] move position center
 
 # Focus navigation
 bindsym $mod+Left focus left
@@ -217,6 +221,11 @@ for_window [class="pavucontrol"] floating enable, resize set 640 400
 
 # Make nm-connection-editor smaller and floating when opened 
 for_window [class="Nm-connection-editor"] floating enable, resize set 640 400
+
+# nvim within mc
+for_window [class="nvimfloat"] floating enable, border pixel 2
+for_window [class="nvimfloat"] resize set 1300 700
+for_window [class="nvimfloat"] move position center
 
 
 

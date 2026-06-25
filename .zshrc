@@ -79,8 +79,8 @@ alias shutdownnow='sudo systemctl poweroff'
 # ====================================================================
 # 6. ENVIRONMENT VARIABLES
 # ====================================================================
-export EDITOR="helix"
-export VISUAL="helix"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 export PATH=$PATH:/usr/sbin
 export PATH="$HOME/.local/bin:$PATH"
