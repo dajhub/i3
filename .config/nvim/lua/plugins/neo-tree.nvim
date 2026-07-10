@@ -3,6 +3,7 @@ return {
   opts = {
     filesystem = {
       filtered_items = {
+        visible = true,
         hide_dotfiles = false,
         -- Optional: Set to true if you want to see files ignored by .gitignore
         -- hide_gitignored = false, 

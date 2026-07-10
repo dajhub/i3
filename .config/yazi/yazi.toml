@@ -1,4 +1,7 @@
 [opener]
 edit = [
-    { run = '/usr/bin/helix "$@"', block = true }
+    { run = '/usr/bin/nvim "$@"', block = true }
 ]
+
+[mgr]
+show_hidden = true

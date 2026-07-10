@@ -1,3 +1,0 @@
-ENTRY "Home" URL "/home/david"
-ENTRY ".config" URL "/home/david/.config"
-ENTRY "i3-dots" URL "/home/david/.config/i3"

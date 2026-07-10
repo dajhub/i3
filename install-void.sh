@@ -44,6 +44,7 @@ echo "--> Installing Desktop Utilities & X11 Utilities"
 sudo xbps-install -y \
   betterlockscreen \
   brightnessctl \
+  dmenu \
   rofi \
   dunst \
   feh \
@@ -67,7 +68,6 @@ sudo xbps-install -y \
   kitty \
   zsh \
   micro \
-  mc \
   neovim
 
 # 2f. Audio Stack (PipeWire)
@@ -117,6 +117,10 @@ sudo xbps-install -y \
 # 2j. Browser
 echo "--> Browser"
 sudo xbps-install -y firefox
+
+# 2k. Fonts
+echo "--> Fonts"
+sudo xbps-install -y ttf-ubuntu-font-family
 
 # Configure Shell
 echo "--> Configuring Shell"

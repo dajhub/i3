@@ -1,32 +1,30 @@
-; adapted catppuccin macchiato
-
+;catppuccin frappe
 [color]
 
-background= #24273a
-foreground = #cad3f5
+background = #303446
+foreground = #c6d0f5
 
-base = #24273a
-crust = #181926
-mantle = #1e2030
-surface0 = #363a4f
-surface2 = #5b6078
-text = #cad3f5
-subtext = #b8c0e0
-teal = #8bd5ca
-sky = #91d7e3
-blue = #8aadf4
-lavender = #b7bdf8
-flamingo = #f0c6c6
-green = #a6da95
-yellow = #eed49f
-red = #ed8796
+base = #303446
+crust = #232634
+mantle = #292c3c
+surface0 = #414559
+surface2 = #626880
+text = #c6d0f5
+subtext = #b5bfe2
+teal = #81c8be
+sky = #99d1db
+blue = #8caaee
+lavender = #babbf1
+flamingo = #eebebe
+green = #a6d189
+yellow = #e5c890
+red = #e78284
 
-
-altsky = #66E3F7
-altblue = #5A95FF
-altlavender = #98A4FF
-altflamingo = #FFA8AF
-altgreen = #84EA66
-altyellow = #FFD36B
-altred = #FF617C
+altsky = #7dc4cf
+altblue = #6e9efb
+altlavender = #a7a9ff
+altflamingo = #ffb3b3
+altgreen = #9ce67a
+altyellow = #ffd27a
+altred = #ff6b81
 

@@ -25,6 +25,8 @@ bindsym $mod+space exec --no-startup-id rofi -config ~/.config/i3/rofi/config.ra
 bindsym $mod+w exec --no-startup-id rofi -config ~/.config/i3/rofi/config.rasi -show window # Lists windows
 bindsym $mod+Shift+e exec --no-startup-id rofi -config ~/.config/i3/rofi/config.rasi -show filebrowser # Show menus
 
+bindsym $mod+d exec --no-startup-id ~/.config/dmenu/dmenu.sh
+
 bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/scripts/reload.sh # Reload
 
 bindsym $mod+Control+l exec --no-startup-id betterlockscreen -l dim

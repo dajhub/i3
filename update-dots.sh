@@ -23,11 +23,11 @@ sync_file() {
 sync_dir "$HOME/.config/alacritty" ".config/alacritty"
 sync_dir "$HOME/.config/betterlockscreen" ".config/betterlockscreen"
 sync_dir "$HOME/.config/gtk-3.0" ".config/gtk-3.0"
+sync_dir "$HOME/.config/dmenu" ".config/dmenu"
 sync_dir "$HOME/.config/helix" ".config/helix"
 sync_dir "$HOME/.config/dunst" ".config/dunst"
 sync_dir "$HOME/.config/kitty" ".config/kitty"
 sync_dir "$HOME/.config/i3" ".config/i3"
-sync_dir "$HOME/.config/mc" ".config/mc"
 sync_dir "$HOME/.config/micro" ".config/micro"
 sync_dir "$HOME/.config/nvim" ".config/nvim"
 sync_dir "$HOME/.config/yazi" ".config/yazi"
@@ -39,4 +39,3 @@ sync_dir "$HOME/.icons" ".icons"
 
 # zshrc file
 sync_file "$HOME/.zshrc" ".zshrc"
-
