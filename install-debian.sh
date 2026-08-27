@@ -41,7 +41,7 @@ msg "Installing Session and Login Management"
 sudo apt install -y \
   sddm \
   dbus-x11 \
-  policykit-1-gnome
+  lxqt-policykit
 
 # 2c. Desktop Utilities (Lockscreen, Launchers, Notifications)
 msg "Installing Desktop Utilities & X11 Utilities"
