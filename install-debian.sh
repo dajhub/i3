@@ -47,37 +47,33 @@ sudo apt install -y \
 msg "Installing Desktop Utilities & X11 Utilities"
 sudo apt install -y \
   brightnessctl \
-  dmenu \
-  rofi \
+  suckless-tools rofi \
   dunst \
   feh \
-  x11-xcontrols \
-  x11-xserver-utils \
   xclip \
   xdotool \
   xss-lock \
   alacritty \
   maim \
-  i3lock-color \
   bc \
   imagemagick
 
 # Install betterlockscreen via standalone installer
-if ! command -v betterlockscreen &>/dev/null; then
-  msg "Installing betterlockscreen..."
-  wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/main.zip -O /tmp/bls.zip
-  unzip -o /tmp/bls.zip -d /tmp/
-  sudo cp /tmp/betterlockscreen-main/betterlockscreen /usr/local/bin/
-  rm -rf /tmp/bls.zip /tmp/betterlockscreen-main
-fi
+#if ! command -v betterlockscreen &>/dev/null; then
+#  msg "Installing betterlockscreen..."
+#  wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/main.zip -O /tmp/bls.zip
+#  unzip -o /tmp/bls.zip -d /tmp/
+#  sudo cp /tmp/betterlockscreen-main/betterlockscreen /usr/local/bin/
+#  rm -rf /tmp/bls.zip /tmp/betterlockscreen-main
+#fi
 
 # 2d. X11 Development Headers
-msg "Installing Development Libraries"
-sudo apt install -y \
-  libx11-dev \
-  libxft-dev \
-  libxinerama-dev \
-  build-essential
+#msg "Installing Development Libraries"
+#sudo apt install -y \
+#  libx11-dev \
+#  libxft-dev \
+#  libxinerama-dev \
+#  build-essential
 
 # 2e. Terminal & Editors
 msg "Installing terminal and editors"
@@ -117,18 +113,9 @@ sudo apt install -y \
 
 # 2i. File manager & Dependencies
 msg "Installing File Manager & Command-line Tools"
-sudo apt install -y \
-  yazi \
-  ffmpeg \
-  7zip \
-  jq \
-  poppler-utils \
-  fd-find \
-  ripgrep \
-  fzf \
-  zoxide \
-  resvg \
-  imagemagick
+curl -fsSL https://yazi-rs.github.io/builds/yazi-keyring.gpg | sudo tee /usr/share/keyrings/yazi-keyring.gpg >/dev/null
+echo 'deb [signed-by=/usr/share/keyrings/yazi-keyring.gpg] https://yazi-rs.github.io/builds/ stable main' | sudo tee /etc/apt/sources.list.d/yazi.list >/dev/null
+sudo apt update && sudo apt install -y yazi
 
 # 2j. Browser
 msg "Installing Web Browser"
@@ -138,8 +125,7 @@ sudo apt install -y firefox-esr
 msg "Installing Fonts"
 sudo apt install -y \
   fonts-ubuntu \
-  fonts-font-awesome \
-  fonts-nerd-font || sudo apt install -y fonts-ubuntu fonts-font-awesome
+  fonts-font-awesome
 
 # Configure Shell
 msg "Configuring Zsh Shell"
