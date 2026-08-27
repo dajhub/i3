@@ -39,9 +39,10 @@ pipx install autotiling || true
 # 2b. Display Manager & Session Management
 msg "Installing Session and Login Management"
 sudo apt install -y \
-  sddm \
   dbus-x11 \
-  lxqt-policykit
+  mate-polkit
+
+sudo apt install --no-install-recommends -y sddm
 
 # 2c. Desktop Utilities (Lockscreen, Launchers, Notifications)
 msg "Installing Desktop Utilities & X11 Utilities"
@@ -109,6 +110,7 @@ sudo apt install -y \
   htop \
   rsync \
   nodejs \
+  lua5.4 \
   git
 
 # 2i. File manager & Dependencies
