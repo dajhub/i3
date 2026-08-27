@@ -1,0 +1,191 @@
+#!/usr/bin/env bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Messages
+msg() { echo -e "--> \033[1;32m$1\033[0m"; }
+warn() { echo -e "\033[0;33m[WARN]\033[0m $1"; }
+
+echo "=== Starting Debian 13 (Trixie) i3 + Polybar + SDDM Installation ==="
+
+# 1. Update the package database
+msg "Updating APT package database..."
+sudo apt update && sudo apt upgrade -y
+
+# 2. Display Server, NetworkManager & Graphics
+msg "Installing X11 Display Server, Drivers, and Networking"
+sudo apt install -y \
+  xserver-xorg-core \
+  xinit \
+  x11-xserver-utils \
+  xorg \
+  xserver-xorg-video-intel \
+  mesa-va-drivers \
+  network-manager
+
+# 2a. Window Manager & Desktop Environment
+msg "Installing Window Manager and Desktop Components"
+sudo apt install -y \
+  i3 \
+  polybar \
+  picom \
+  python3-pip \
+  pipx
+
+# Install autotiling via pipx
+pipx install autotiling || true
+
+# 2b. Display Manager & Session Management
+msg "Installing Session and Login Management"
+sudo apt install -y \
+  sddm \
+  dbus-x11 \
+  policykit-1-gnome
+
+# 2c. Desktop Utilities (Lockscreen, Launchers, Notifications)
+msg "Installing Desktop Utilities & X11 Utilities"
+sudo apt install -y \
+  brightnessctl \
+  dmenu \
+  rofi \
+  dunst \
+  feh \
+  x11-xcontrols \
+  x11-xserver-utils \
+  xclip \
+  xdotool \
+  xss-lock \
+  alacritty \
+  maim \
+  i3lock-color \
+  bc \
+  imagemagick
+
+# Install betterlockscreen via standalone installer
+if ! command -v betterlockscreen &>/dev/null; then
+  msg "Installing betterlockscreen..."
+  wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/main.zip -O /tmp/bls.zip
+  unzip -o /tmp/bls.zip -d /tmp/
+  sudo cp /tmp/betterlockscreen-main/betterlockscreen /usr/local/bin/
+  rm -rf /tmp/bls.zip /tmp/betterlockscreen-main
+fi
+
+# 2d. X11 Development Headers
+msg "Installing Development Libraries"
+sudo apt install -y \
+  libx11-dev \
+  libxft-dev \
+  libxinerama-dev \
+  build-essential
+
+# 2e. Terminal & Editors
+msg "Installing terminal and editors"
+sudo apt install -y \
+  kitty \
+  zsh \
+  micro \
+  neovim
+
+# 2f. Audio Stack (PipeWire)
+msg "Installing PipeWire and Audio Utilities"
+sudo apt install -y \
+  pipewire \
+  wireplumber \
+  pipewire-audio-client-libraries \
+  pipewire-pulse \
+  pipewire-alsa \
+  alsa-utils \
+  pulseaudio-utils \
+  pamixer
+
+# 2g. Bluetooth
+msg "Installing Bluetooth Stack"
+sudo apt install -y \
+  bluez \
+  blueman
+
+# 2h. Utilities
+msg "Installing System & CLI Utilities"
+sudo apt install -y \
+  curl \
+  unzip \
+  htop \
+  rsync \
+  nodejs \
+  git
+
+# 2i. File manager & Dependencies
+msg "Installing File Manager & Command-line Tools"
+sudo apt install -y \
+  yazi \
+  ffmpeg \
+  7zip \
+  jq \
+  poppler-utils \
+  fd-find \
+  ripgrep \
+  fzf \
+  zoxide \
+  resvg \
+  imagemagick
+
+# 2j. Browser
+msg "Installing Web Browser"
+sudo apt install -y firefox-esr
+
+# 2k. Fonts
+msg "Installing Fonts"
+sudo apt install -y \
+  fonts-ubuntu \
+  fonts-font-awesome \
+  fonts-nerd-font || sudo apt install -y fonts-ubuntu fonts-font-awesome
+
+# Configure Shell
+msg "Configuring Zsh Shell"
+if [ ! -d "$HOME/.zinit" ]; then
+  bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+fi
+sudo chsh -s "$(which zsh)" "$USER"
+
+# Configure systemd services
+msg "Enabling core system services..."
+sudo systemctl enable NetworkManager
+sudo systemctl enable bluetooth
+sudo systemctl enable sddm
+
+# Add user to required groups
+msg "Adding user $USER to necessary groups..."
+sudo usermod -aG video,audio,render,input "$USER"
+
+# 4. Configuring directories for dotfiles
+msg "Preparing config directories..."
+
+CONFIG_DIR="$HOME/.config"
+DOTFILES_SRC="$HOME/i3"
+WALLPAPERS_DIR="$HOME/Pictures/Wallpapers"
+SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
+
+mkdir -p "$SCREENSHOTS_DIR"
+mkdir -p "$WALLPAPERS_DIR"
+mkdir -p "$CONFIG_DIR"
+
+if [ -d "$DOTFILES_SRC" ]; then
+  msg "Syncing dotfiles from $DOTFILES_SRC..."
+  if [ -f "$DOTFILES_SRC/folders.sh" ]; then
+    chmod +x "$DOTFILES_SRC/folders.sh"
+    (cd "$DOTFILES_SRC" && ./folders.sh)
+    msg "Folder sync complete."
+  else
+    warn "folders.sh not found in $DOTFILES_SRC."
+  fi
+else
+  warn "Source directory $DOTFILES_SRC not found! Skipping dotfiles."
+fi
+
+echo "========================================================="
+echo " Installation complete!"
+echo "========================================================="
+echo "Next step: Reboot your system."
+echo "Note: SDDM will launch on startup. Select 'i3' from the session menu."
+echo "========================================================="
