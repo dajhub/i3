@@ -85,6 +85,7 @@ sudo apt install -y \
   micro
 
 # Lazyvim needs a newer version of neovim:
+sudo apt install -y curl
 curl -sL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz |
   sudo tar -xzf - --strip-components=1 --overwrite -C /usr/local
 
@@ -109,7 +110,6 @@ sudo apt install -y \
 # 2h. Utilities
 msg "Installing System & CLI Utilities"
 sudo apt install -y \
-  curl \
   unzip \
   htop \
   rsync \
