@@ -48,7 +48,8 @@ sudo apt install --no-install-recommends -y sddm
 msg "Installing Desktop Utilities & X11 Utilities"
 sudo apt install -y \
   brightnessctl \
-  suckless-tools rofi \
+  suckless-tools \
+  rofi \
   dunst \
   feh \
   xclip \
@@ -81,8 +82,11 @@ msg "Installing terminal and editors"
 sudo apt install -y \
   kitty \
   zsh \
-  micro \
-  neovim
+  micro
+
+# Lazyvim needs a newer version of neovim:
+curl -sL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz |
+  sudo tar -xzf - --strip-components=1 --overwrite -C /usr/local
 
 # 2f. Audio Stack (PipeWire)
 msg "Installing PipeWire and Audio Utilities"

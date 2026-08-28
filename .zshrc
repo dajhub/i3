@@ -111,12 +111,16 @@ export COLORTERM=truecolor
 
 
 # ====================================================================
-# 9. AUTO-START TMUX
+# 9. UPDATE NEOVIM WHEN INSTALLED VIA TARBALL - run 'update-nvim'
 # ====================================================================
 
-#if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-#  tmux attach -t default || tmux new -s default
-#fi
+update-nvim() {
+    echo "Updating Neovim to the latest stable release..."
+    curl -sL https://github.com \
+    | sudo tar -xzf - --strip-components=1 --overwrite -C /usr/local
+    echo "Done! Current version:"
+    nvim --version | head -n 1
+}
 
 # ====================================================================
 # 10. AUTO-START X (TTY1 ONLY)
