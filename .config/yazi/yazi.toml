@@ -1,6 +1,6 @@
 [opener]
 edit = [
-    { run = '/usr/bin/nvim "$@"', block = true }
+    { run = 'nvim %s', block = true, for = "unix" }
 ]
 
 [mgr]

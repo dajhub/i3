@@ -83,7 +83,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 export PATH=$PATH:/usr/sbin
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/.local/bin:$PATH"
 
 # ====================================================================
 # 7. YAZI

@@ -5,7 +5,8 @@
 set $mod Mod4
 
 # ----- MONITOR DISPLAY -----
-exec --no-startup-id xrandr -s 1366x768
+#exec --no-startup-id xrandr -s 1366x768
+exec --no-startup-id xrandr --output LVDS-1 --mode 1366x768 --primary --output HDMI-1 --mode 1920x1080 --right-of LVDS-1
 
 # ----- GAPS -----
 gaps inner 3
@@ -30,10 +31,8 @@ bindsym $mod+d exec --no-startup-id ~/.config/dmenu/dmenu.sh
 bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/scripts/reload.sh # Reload
 
 bindsym $mod+Control+l exec --no-startup-id betterlockscreen -l dim
-#bindsym $mod+Control+Delete exec --no-startup-id systemctl poweroff # For syxtemd
-bindsym $mod+Control+Delete exec --no-startup-id loginctl poweroff # For void
-#bindsym $mod+Control+r exec --no-startup-id systemctl reboot # For systemd
-bindsym $mod+Control+r exec --no-startup-id loginctl reboot # For void
+bindsym $mod+Control+Delete exec --no-startup-id systemctl poweroff # For syxtemd
+bindsym $mod+Control+r exec --no-startup-id systemctl reboot # For systemd
 bindsym $mod+Delete exec --no-startup-id i3-msg exit
 
 # Workspace navigation (1-10)
@@ -137,6 +136,17 @@ bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+Tab workspace next
 bindsym $mod+grave workspace prev
 
+# ----- BIND WORKSPACES TO SPECIFIC MONITORS -----
+workspace 1 output LVDS-1
+workspace 2 output LVDS-1
+workspace 3 output LVDS-1
+workspace 4 output LVDS-1
+workspace 5 output LVDS-1
+
+workspace 6 output HDMI-1
+workspace 7 output HDMI-1
+workspace 8 output HDMI-1
+workspace 9 output HDMI-1
 
 # ----- ACTIONS & DEFAULTS -----
 
@@ -183,7 +193,8 @@ client.urgent           $urgent           $urgent           $bg         $urgent 
 # ----- AUTOSTART -----
 
 # Polybar
-exec_always --no-startup-id sleep 1 && polybar --config=~/.config/i3/polybar/config.ini main 2>&1 | tee -a /tmp/polybar.log &
+#exec_always --no-startup-id sleep 1 && polybar --config=~/.config/i3/polybar/config.ini main 2>&1 | tee -a /tmp/polybar.log &
+exec_always --no-startup-id ~/.config/i3/polybar/launch.sh
 
 # Picom
 exec_always --no-startup-id sleep 1 && picom --config ~/.config/i3/picom.conf
@@ -197,7 +208,6 @@ exec --no-startup-id setxkbmap gb
 
 # Autotiling script
 # https://github.com/nwg-piotr/autotiling
-# yay -S autotiling (in AUR if using Arch)
 exec_always --no-startup-id autotiling
 
 # Start Dunst notification daemon
@@ -210,8 +220,8 @@ exec --no-startup-id xset s 300 300
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dim
 
 # NEEDED WITH VOID (remove with Arch/Fedora) Start PipeWire audio engine and session manager
-exec_always --no-startup-id pipewire
-exec_always --no-startup-id wireplumber
+#exec_always --no-startup-id pipewire
+#exec_always --no-startup-id wireplumber
 
 
 # ----- FLOATNG -----

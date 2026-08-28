@@ -30,11 +30,7 @@ sudo apt install -y \
   i3 \
   polybar \
   picom \
-  python3-pip \
-  pipx
-
-# Install autotiling via pipx
-pipx install autotiling || true
+  autotiling
 
 # 2b. Display Manager & Session Management
 msg "Installing Session and Login Management"
