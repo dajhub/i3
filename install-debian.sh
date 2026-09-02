@@ -56,14 +56,17 @@ sudo apt install -y \
   bc \
   imagemagick
 
-# Install betterlockscreen via standalone installer
-#if ! command -v betterlockscreen &>/dev/null; then
-#  msg "Installing betterlockscreen..."
-#  wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/main.zip -O /tmp/bls.zip
-#  unzip -o /tmp/bls.zip -d /tmp/
-#  sudo cp /tmp/betterlockscreen-main/betterlockscreen /usr/local/bin/
-#  rm -rf /tmp/bls.zip /tmp/betterlockscreen-main
-#fi
+# BETTERLOCKSCREEN - source https://github.com/betterlockscreen/betterlockscreen?tab=readme-ov-file
+# Install dependencies for i3lock-color
+sudo apt install -y autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libgif-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
+# Install i3lock-color
+git clone https://github.com/Raymo111/i3lock-color.git
+cd i3lock-color
+./install-i3lock-color.sh
+# Additional dependencies for Betterlockscreen
+sudo apt install -y imagemagick
+# Install Betterlockscreen
+wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
 
 # 2d. X11 Development Headers
 #msg "Installing Development Libraries"

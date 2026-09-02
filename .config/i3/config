@@ -30,7 +30,7 @@ bindsym $mod+d exec --no-startup-id ~/.config/dmenu/dmenu.sh
 
 bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/scripts/reload.sh # Reload
 
-bindsym $mod+Control+l exec --no-startup-id betterlockscreen -l dim
+bindsym $mod+Control+l exec --no-startup-id ~/.local/bin/betterlockscreen -l dim
 bindsym $mod+Control+Delete exec --no-startup-id systemctl poweroff # For syxtemd
 bindsym $mod+Control+r exec --no-startup-id systemctl reboot # For systemd
 bindsym $mod+Delete exec --no-startup-id i3-msg exit
@@ -217,7 +217,7 @@ exec_always --no-startup-id dunst
 # Set the idle timeout to 5 minutes (300 seconds)
 exec --no-startup-id xset s 300 300
 # Let xss-lock handle the idle event and system sleep events
-exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dim
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.local/bin/betterlockscreen -l dim
 
 # NEEDED WITH VOID (remove with Arch/Fedora) Start PipeWire audio engine and session manager
 #exec_always --no-startup-id pipewire

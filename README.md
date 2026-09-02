@@ -3,26 +3,33 @@
 ![i3-desktop](assets/i3.png)
 
 ### Introduction
-A fedora minimal install via [Fedora Everything](https://fedoraproject.org/misc/#everything), i.e. no initial desktop.
+A Debian 13 install of i3. Run the installer as a minimal installation, i.e. installation of Debian with no desktop, just a terminal.
 
 ### Installation
 - After a minimal installation reboot into terminal and clone repository:
 ```bash
-sudo dnf install git
+sudo apt install git
 git clone https://github.com/dajhub/i3
 ```
 
 - Install i3 and folders (check `install-fedora.sh`):
 
 ```bash
-./install-fedora.sh
+./install-debian.sh
 ```
 
 > [!NOTE]
 >
-> `install-fedora.sh` runs `folders.sh` which runs rsync to copy folders across.
+> `install-debian.sh` runs `folders.sh` which runs rsync to copy folders across.
 > If, subsequently, changes are made in those folder (e.g. changes to i3 config file) then running `~/i3/update-dots.sh`
 > will update the i3 folder with the changes.
+
+### Updates
+A script is available, `update-all.sh`, which updates/upgrades debian packages along with any flatpak packages.  Two logs kept in ~/
+
+To use move `update-all.sh` to /usr/local/bin/
+
+To run open a terminal and type `update-all`.
 
 ### Note
 ##### Touchpad Not Working
